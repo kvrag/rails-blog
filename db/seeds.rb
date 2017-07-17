@@ -3,6 +3,13 @@
 #
 require 'faker' 
 
+until User.count == 5
+  user = User.create(
+    username: Faker::StarWars.specie,
+    email: Faker::Internet.safe_email(Faker::Hacker.noun),
+    password_hash: Password.create(Faker::Lorem.word) )
+end
+
 8.times do 
   post = Post.create(
     title: Faker::StarWars.quote,
