@@ -11,13 +11,20 @@
 
     <%= javascript_include_tag 'application' %>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/016cc8e025.js"></script>
   </head>
 
   <body>
 
   <div id="container">
 
+
+
     <nav>
+      <div id="logo">
+        <i class="fa fa-comments fa-4x" aria-hidden="true"></i>
+      </div>
+
       <ul class="nav-list">
         <li class="category">Website</li>
         <li><%= link_to "Blog", root_path %></li>
