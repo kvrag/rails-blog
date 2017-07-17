@@ -2,12 +2,15 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 require 'faker' 
+require 'bcrypt'
 
 until User.count == 5
-  user = User.create(
+  user = User.new(
     username: Faker::StarWars.specie,
-    email: Faker::Internet.safe_email(Faker::Hacker.noun),
-    password_hash: Password.create(Faker::Lorem.word) )
+    email: Faker::Internet.safe_email(Faker::Hacker.noun)
+    )
+  user.password = Faker::Lorem.word
+  user.save
 end
 
 8.times do 
@@ -22,7 +25,7 @@ end
   comment = Comment.create(
     name: Faker::StarWars.character,
     body: Faker::StarWars.wookiee_sentence,
-    post_id: Post.all.sample.id 
+    post_id: Post.all.sample.id
     )
 end
 
