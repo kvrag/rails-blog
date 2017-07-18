@@ -1,18 +1,11 @@
-class User < ActiveRecord::Base
-  # has_many :posts
-  # has_many :comments
+class User < ApplicationRecord
+  has_many :posts
+  has_many :comments
 
   validates :username, :email, presence: true, uniqueness: true
+  validates :email, format: { with: /.+@\D*\.\D{3}\z/ }
+  validates :password, length: { minimum: 6 }, allow_nil: false
 
-  include BCrypt
-
-  def password
-    @password ||= Password.new(password_hash)
-  end
-
-  def password=(new_password)
-    @password = Password.create(new_password)
-    self.password_hash = @password
-  end
+  has_secure_password
 
 end

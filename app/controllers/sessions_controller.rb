@@ -1,20 +1,21 @@
 class SessionsController < ApplicationController
 
+  def new
+  end
 
-  def login_attempt
-    authorized_user = User.authenticate(params[:username_or_email],params[:login_password])
-    if authorized_user
-      session[:user_id] = authorized_user.id
-      redirect_to(:action => 'home')
+  def create
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:current_user_id] = @user.id
+      redirect_to user_path(@user)
     else
-      flash[:notice] = "Invalid username or password"
-      flash[:color]= "invalid"
-      render "login"  
+      @errors = ["Invalid login."]
+      render "new"
     end
   end
 
-  def logout
-    session[:user_id] = nil
-    redirect_to(:action => 'login')
+  def destroy
+    session[:current_user_id] = nil
+    redirect_to '/'
   end
 end

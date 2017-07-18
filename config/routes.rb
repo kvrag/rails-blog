@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts do 
-    resources :comments 
+
+  resources :posts, only: [:index, :show] do
+    resources :comments
+  end
+
+  namespace :admin do
+    resources :posts, except: [:index, :show]
   end
 
   resources :users
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
 
   root "posts#index"
 
