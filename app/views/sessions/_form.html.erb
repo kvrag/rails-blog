@@ -1,12 +1,24 @@
-<%= form_tag(:action => 'login_attempt') do %>
+<%= form_tag(sessions_path, method: 'post') do %>
+
+<% if @errors %>
+    <div id="errors">
+      <h2><%= pluralize(@errors.count, "error") %> prevented this login.</h2>
+      <ul>
+        <% @errors.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  </div>
+<% end %>
+
   <p>
     <%= label_tag :username_or_email %><br>
-    <%= text_field_tag :username_or_email %> 
+    <%= text_field_tag :username_or_email %>
   </p>
   <p>
-    <%= label_tag :login_password %><br>
-    <%= password_field_tag :login_password %>
-  </p> 
+    <%= label_tag :password %><br>
+    <%= password_field_tag :password %>
+  </p>
   <p>
     <%= submit_tag("Log In") %>
   </p>

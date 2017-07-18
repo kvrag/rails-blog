@@ -19,7 +19,7 @@ class Admin::PostsController < AdminController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(params[:post].permit(:title, :body))
+    if @post.update(post_params)
       redirect_to @post
     else
       render 'edit'

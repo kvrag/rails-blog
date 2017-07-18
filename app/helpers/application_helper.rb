@@ -1,13 +1,7 @@
 module ApplicationHelper
 
-  def log_in(args = {})
-    user = User.find_by_email(args[:email])
-    if user.nil?
-      false
-    elsif user.password == args[:password]
-      session[:user_id] = user.id
-      true
-    end
+  def log_in(user)
+    session[:user_id] = user.id
   end
 
   def current_user
@@ -15,6 +9,7 @@ module ApplicationHelper
   end
 
   def logged_in?
+    p "*" * 30
     current_user != nil
   end
 end

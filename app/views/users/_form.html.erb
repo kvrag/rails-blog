@@ -5,7 +5,7 @@
       <h2><%= pluralize(@user.errors.count, "error") %> prevented this user from saving.</h2>
       <ul>
         <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li> 
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
@@ -13,17 +13,17 @@
 
   <p>
     <%= f.label :username %><br>
-    <%= f.text_field :username%> 
+    <%= f.text_field :username%>
   </p>
-  <p> 
+  <p>
     <%= f.label :email %><br>
-    <%= f.text_field :email%> 
+    <%= f.text_field :email%>
   </p>
   <p>
     <%= f.label :password %><br>
     <%= f.password_field :password%>
-  </p> 
+  </p>
   <p>
-    <%= f.submit :Signup %>
+    <%= f.submit :Register %>
   </p>
 <% end %>

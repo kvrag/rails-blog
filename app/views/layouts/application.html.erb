@@ -41,7 +41,7 @@
       <p class="sign-in">Admin Login</p>
     </nav>
 
-    
+
       <header>
 
         <% if current_page?(root_path) %>
@@ -56,7 +56,7 @@
           <% if logged_in? %>
             <button class="button header"><%= link_to "Profile", show_user_path %></button>
             <button class="button header"><%= link_to "New Post", new_post_path %></button>
-            <button class="button header"><%= link_to "Log Out", logout_session_path %></button>
+            <button class="button header"><%= link_to "Log Out", session_path %></button>
           <% else %>
             <button class="button header"><%= link_to "Register", new_user_path %></button>
             <button class="button header"><%= link_to "Log In", new_session_path %></button>
